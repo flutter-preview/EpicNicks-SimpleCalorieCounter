@@ -1,16 +1,14 @@
-# calorie_tracker
+# Simple Calorie Tracker
 
-A very simple calorie tracker with over-time analytics tools.
+A very simple calorie tracker with over-time analytics tools (in development).
+Built in flutter \(dart\) with Android in mind as the build target.
+This app exists to track only the calories you consume for the day, with the philosophy that entering individual foods
+is a waste of time for those who are simply trying to maintain a certain level of calorie intake - and that calorie
+look-up through listed nutrition facts or a quick google search is more than enough. 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+This app is for those who are frustrated by apps that make tracking your daily intake a chore.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+CICO.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
