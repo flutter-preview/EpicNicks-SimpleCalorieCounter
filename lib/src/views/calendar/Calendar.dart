@@ -83,6 +83,7 @@ class _CalendarPageState extends State<CalendarPage> {
                     ),
                   ]));
                 } else {
+                  final filteredSnapshotData = snapshot.data!.where((element) => element.calorieExpression.isNotEmpty).toList();
                   return Expanded(
                       child: Column(
                     children: [
@@ -100,7 +101,7 @@ class _CalendarPageState extends State<CalendarPage> {
                           ),
                           child: Center(
                             child: Text(
-                              "Total Calories: ${snapshot.data!.map((e) => evaluateFoodItem(e.calorieExpression)).fold(0.0, (prev, cur) => prev + cur).round()}",
+                              "Total Calories: ${filteredSnapshotData.map((e) => evaluateFoodItem(e.calorieExpression)).fold(0.0, (prev, cur) => prev + cur).round()}",
                               style: Theme.of(context).textTheme.titleLarge,
                             ),
                           ),
@@ -113,17 +114,17 @@ class _CalendarPageState extends State<CalendarPage> {
                           child: Material(
                             child: ListView.builder(
                               physics: const BouncingScrollPhysics(),
-                              itemCount: snapshot.data!.length,
+                              itemCount: filteredSnapshotData.length,
                               itemBuilder: (context, index) {
                                 return ListTile(
                                   tileColor: index % 2 == 1 ? Colors.yellow[100] : Colors.white,
                                   dense: true,
                                   title: Text(
                                     style: Theme.of(context).textTheme.titleSmall,
-                                    (!isConstant(snapshot.data![index].calorieExpression)
-                                            ? "[${evaluateFoodItem(snapshot.data![index].calorieExpression).round()}]:   "
+                                    (!isConstant(filteredSnapshotData[index].calorieExpression)
+                                            ? "( = ${evaluateFoodItem(filteredSnapshotData[index].calorieExpression).round()} )   "
                                             : "") +
-                                        snapshot.data![index].calorieExpression,
+                                        filteredSnapshotData[index].calorieExpression,
                                   ),
                                 );
                               },

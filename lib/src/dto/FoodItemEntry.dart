@@ -28,7 +28,11 @@ bool isConstant(String calorieExpression) {
 double evaluateFoodItem(String calorieExpression) {
   try {
     // enable alternate expression symbols here
-    calorieExpression = calorieExpression.replaceAll("x", "*").replaceAll("÷", "/");
+    calorieExpression = calorieExpression
+        .replaceAll("x", "*")
+        .replaceAll("÷", "/")
+        // allows for comma separated values while maintaining the semantics of a list total; fold(+, [1,2,3]) == fold([1+2+3 <6>])
+        .replaceAll(",", "+");
     Expression expression = Parser().parse(calorieExpression);
     final result = double.parse(expression.evaluate(EvaluationType.REAL, ContextModel()).toString());
     // avoids division by zero

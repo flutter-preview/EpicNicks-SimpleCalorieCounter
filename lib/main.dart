@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/src/helpers/DatabaseHelper.dart';
 import 'package:calorie_tracker/src/views/calendar/Calendar.dart';
 import 'package:calorie_tracker/src/views/DailyCalories.dart';
 import 'package:calorie_tracker/src/views/Settings.dart';
@@ -6,11 +7,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  DatabaseHelper.instance.purgePreviousEmpty();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
 
   @override
   Widget build(BuildContext context) {
